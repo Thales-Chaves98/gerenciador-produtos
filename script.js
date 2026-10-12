@@ -10,8 +10,11 @@ const produtos = [
 
 function listarProdutos(produtos){
     listaProdutos.textContent = "";
-    
+
     produtos.forEach(produto => {
+
+        let precoFormatado = formatarPreco(produto.preco);
+
         const tableRow = document.createElement('tr');
 
         const tdNome = document.createElement('td');
@@ -22,7 +25,7 @@ function listarProdutos(produtos){
 
         const tdPreco = document.createElement('td');
         const spanPreco = document.createElement('span');
-        spanPreco.textContent = produto.preco;
+        spanPreco.textContent = precoFormatado
         tdPreco.append(spanPreco);
 
         const tdEstoque = document.createElement('td');
@@ -38,6 +41,17 @@ function listarProdutos(produtos){
         listaProdutos.append(tableRow);
     });
 
+}
+
+function formatarPreco(preco){
+    const formatador = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+    });
+
+    const precoFormatado = formatador.format(preco);
+
+    return precoFormatado;
 }
 
 listarProdutos(produtos);
