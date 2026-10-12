@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplicação educacional para gerenciamento de produtos com JavaScript.">
+  <title>Gerenciador de Produtos</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">GP</span>
+        <div>
+          <p class="eyebrow">Projeto de formação · JavaScript</p>
+          <h1>Gerenciador de Produtos</h1>
+        </div>
+      </div>
+      <span class="environment-tag">Ambiente de estudo</span>
+    </header>
+
+    <main class="main-content">
+      <section class="page-intro" aria-labelledby="intro-title">
+        <div>
+          <p class="eyebrow">Painel de controle</p>
+          <h2 id="intro-title">Seu estoque, em um só lugar.</h2>
+          <p>Organize e acompanhe os produtos cadastrados. As funcionalidades serão implementadas progressivamente em JavaScript.</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="products-title">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Catálogo</p>
+            <h2 id="products-title">Produtos cadastrados</h2>
+          </div>
+          <span class="count-label">2 produtos de exemplo</span>
+        </div>
+
+        <div class="table-scroll">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Estoque</th>
+              </tr>
+            </thead>
+            <tbody id="lista-produtos">
+              <tr>
+                <td><span class="product-name">Mouse sem fio</span><span class="product-meta">Acessórios</span></td>
+                <td>R$ 89,90</td>
+                <td><span class="stock-badge">12 unidades</span></td>
+              </tr>
+              <tr>
+                <td><span class="product-name">Teclado mecânico</span><span class="product-meta">Periféricos</span></td>
+                <td>R$ 249,90</td>
+                <td><span class="stock-badge">7 unidades</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Projeto educacional · Interface preparada para desenvolvimento em JavaScript.</p>
+    </footer>
+  </div>
+</body>
+</html>
