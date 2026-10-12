@@ -1,5 +1,9 @@
 const listaProdutos = document.getElementById("lista-produtos");
 
+const nomeProdutoInput = document.getElementById("produto-nome");
+const precoProdutoInput = document.getElementById("produto-preco");
+const estoqueProdutoInput = document.getElementById("produto-estoque");
+const novoProdutoBtn =  document.getElementById("novo-produto-btn");
 
 const produtos = [
     {id:1, nome: "Mouse", preco: 25.99, estoque: 5},
@@ -8,12 +12,46 @@ const produtos = [
 ];
 
 
+novoProdutoBtn.addEventListener("click", (e) =>{
+    e.preventDefault();
+
+    criarProduto(produtos);
+});
+
+function criarProduto(produtos){
+
+    const nomeProduto = nomeProdutoInput.value.trim().toUpperCase();
+    const precoProduto = Number(precoProdutoInput.value);
+    const estoqueProduto = Number(estoqueProdutoInput.value); 
+
+    let novoProduto = {
+        id: proximoId(produtos),
+        nome: nomeProduto,
+        preco: precoProduto,
+        estoque: estoqueProduto
+    }
+
+    produtos.push(novoProduto);
+    listarProdutos(produtos);
+}
+
+function proximoId(array){
+    let IdValido = 0;
+    for(let i = 0; i < array.length; i++){
+        if(IdValido < array[i].id){
+            IdValido = array[i].id;
+        }
+    }
+
+    IdValido++;
+}
+
 function listarProdutos(produtos){
     listaProdutos.textContent = "";
 
     produtos.forEach(produto => {
 
-        let precoFormatado = formatarPreco(produto.preco);
+        const precoFormatado = formatarPreco(produto.preco);
 
         const tableRow = document.createElement('tr');
 
