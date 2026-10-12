@@ -5,7 +5,7 @@ const precoProdutoInput = document.getElementById("produto-preco");
 const estoqueProdutoInput = document.getElementById("produto-estoque");
 const novoProdutoForm =  document.getElementById("form-produto");
 
-const produtos = [
+let produtos = [
     {id:1, nome: "Mouse", preco: 25.99, estoque: 5},
     {id:2, nome: "Teclado", preco: 555.99, estoque: 1},
     {id:3, nome: "Monitor", preco: 999.99, estoque: 0},
@@ -16,6 +16,14 @@ novoProdutoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
 
     criarProduto(produtos);
+});
+
+listaProdutos.addEventListener("click", (e) =>{
+    const targetBtn = e.target.closest(".delete-btn");
+
+    if(targetBtn){
+        deletarProduto(Number(targetBtn.dataset.id));
+    }
 });
 
 function criarProduto(produtos){
@@ -50,6 +58,11 @@ function proximoId(array){
     return idValido;
 }
 
+function deletarProduto(id){
+    produtos = produtos.filter(p => p.id !== id);
+    listarProdutos(produtos);
+}
+
 function listarProdutos(produtos){
     listaProdutos.textContent = "";
 
@@ -64,6 +77,7 @@ function listarProdutos(produtos){
         spanNome.textContent = produto.nome;
         spanNome.classList.add("product-name");
         tdNome.append(spanNome);
+        
 
         const tdPreco = document.createElement('td');
         const spanPreco = document.createElement('span');
@@ -76,10 +90,15 @@ function listarProdutos(produtos){
         spanEstoque.classList.add("stock-badge");
         tdEstoque.append(spanEstoque);
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.textContent = "X";
+        deleteBtn.dataset.id = produto.id;
 
         tableRow.append(tdNome);
         tableRow.append(tdPreco);
         tableRow.append(tdEstoque);
+        tableRow.append(deleteBtn);
         listaProdutos.append(tableRow);
     });
 
