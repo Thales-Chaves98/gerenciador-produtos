@@ -7,7 +7,7 @@ const produtos = [
 
 function listarProdutos(produtos){
 
-    for(i = 0; i < produtos.length; i++){
+    for(let i = 0; i < produtos.length; i++){
         console.log(produtos[i]);
     }
 }
