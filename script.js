@@ -90,15 +90,17 @@ function listarProdutos(produtos){
         spanEstoque.classList.add("stock-badge");
         tdEstoque.append(spanEstoque);
 
+        const tdDeleteBtn = document.createElement("td");
         const deleteBtn = document.createElement("button");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.textContent = "X";
         deleteBtn.dataset.id = produto.id;
+        tdDeleteBtn.append(deleteBtn);
 
         tableRow.append(tdNome);
         tableRow.append(tdPreco);
         tableRow.append(tdEstoque);
-        tableRow.append(deleteBtn);
+        tableRow.append(tdDeleteBtn);
         listaProdutos.append(tableRow);
     });
 
