@@ -9,7 +9,8 @@ const produtos = [
 
 
 function listarProdutos(produtos){
-
+    listaProdutos.textContent = "";
+    
     produtos.forEach(produto => {
         const tableRow = document.createElement('tr');
 
