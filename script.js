@@ -3,7 +3,7 @@ const listaProdutos = document.getElementById("lista-produtos");
 const nomeProdutoInput = document.getElementById("produto-nome");
 const precoProdutoInput = document.getElementById("produto-preco");
 const estoqueProdutoInput = document.getElementById("produto-estoque");
-const novoProdutoBtn =  document.getElementById("novo-produto-btn");
+const novoProdutoForm =  document.getElementById("form-produto");
 
 const produtos = [
     {id:1, nome: "Mouse", preco: 25.99, estoque: 5},
@@ -12,7 +12,7 @@ const produtos = [
 ];
 
 
-novoProdutoBtn.addEventListener("click", (e) =>{
+novoProdutoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
 
     criarProduto(produtos);
@@ -33,17 +33,21 @@ function criarProduto(produtos){
 
     produtos.push(novoProduto);
     listarProdutos(produtos);
+    console.log(produtos);
+
+    novoProdutoForm.reset();
 }
 
 function proximoId(array){
-    let IdValido = 0;
+    let idValido = 0;
     for(let i = 0; i < array.length; i++){
-        if(IdValido < array[i].id){
-            IdValido = array[i].id;
+        if(idValido < array[i].id){
+            idValido = array[i].id;
         }
     }
 
-    IdValido++;
+    idValido++;
+    return idValido;
 }
 
 function listarProdutos(produtos){
@@ -93,3 +97,4 @@ function formatarPreco(preco){
 }
 
 listarProdutos(produtos);
+
