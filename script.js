@@ -7,9 +7,9 @@ const estoqueProdutoInput = document.getElementById("produto-estoque");
 const novoProdutoForm =  document.getElementById("form-produto");
 
 let produtos = [
-    {id:1, nome: "Mouse", preco: 25.99, estoque: 5},
-    {id:2, nome: "Teclado", preco: 555.99, estoque: 1},
-    {id:3, nome: "Monitor", preco: 999.99, estoque: 0},
+    {id:1, nome: "MOUSE", 'preco: 25.99, estoque: 5},
+    {id:2, nome: "TECLADO", preco: 555.99, estoque: 1},
+    {id:3, nome: "MONITOR'", preco: 999.99, estoque: 0},
 ];
 
 
@@ -109,10 +109,7 @@ function listarProdutos(produtos){
 }
 
 function atualizarContador(produtos){
-    let totalProdutos = 0;
-    for(let i = 0; i < produtos.length; i++){
-        totalProdutos++;
-    }
+    const totalProdutos = produtos.length;
 
     const totalProdutosTxt = totalProdutos === 1 ? `${totalProdutos} produto`:`${totalProdutos} produtos`;
 
