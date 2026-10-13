@@ -1,4 +1,5 @@
 const listaProdutos = document.getElementById("lista-produtos");
+const totalProdutosSpan = document.getElementById("total-produtos");
 
 const nomeProdutoInput = document.getElementById("produto-nome");
 const precoProdutoInput = document.getElementById("produto-preco");
@@ -104,6 +105,18 @@ function listarProdutos(produtos){
         listaProdutos.append(tableRow);
     });
 
+    atualizarContador(produtos);
+}
+
+function atualizarContador(produtos){
+    let totalProdutos = 0;
+    for(let i = 0; i < produtos.length; i++){
+        totalProdutos++;
+    }
+
+    const totalProdutosTxt = totalProdutos === 1 ? `${totalProdutos} produto`:`${totalProdutos} produtos`;
+
+    totalProdutosSpan.innerText = totalProdutosTxt;
 }
 
 function formatarPreco(preco){
