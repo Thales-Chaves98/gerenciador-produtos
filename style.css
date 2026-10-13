@@ -117,3 +117,11 @@ h1 { margin: 0; font-size: 1.25rem; letter-spacing: -.035em; }
   .primary-button { width: 100%; }
   .form-message:empty { display: none; }
 }
+
+/* Busca do catálogo: interface elaborada com auxílio de inteligência artificial. */
+.catalog-toolbar { padding: 1.2rem 1.8rem; border-bottom: 1px solid var(--border); background: #fbfcff; }
+.search-field { display: flex; flex-direction: column; gap: .5rem; max-width: 440px; }
+.search-field label { font-size: .84rem; font-weight: 650; color: #334155; }
+.search-field input { width: 100%; min-height: 44px; padding: .7rem .95rem; border: 1px solid #cbd5e1; border-radius: 10px; background: white; color: var(--text); font: inherit; }
+.search-field input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px #dbeafe; }
+@media (max-width: 640px) { .catalog-toolbar { padding: 1rem; } .search-field { max-width: none; } }
