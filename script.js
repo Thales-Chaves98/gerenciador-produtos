@@ -6,10 +6,12 @@ const precoProdutoInput = document.getElementById("produto-preco");
 const estoqueProdutoInput = document.getElementById("produto-estoque");
 const novoProdutoForm =  document.getElementById("form-produto");
 
+const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
+
 let produtos = [
-    {id:1, nome: "MOUSE", 'preco: 25.99, estoque: 5},
+    {id:1, nome: "MOUSE", preco: 25.99, estoque: 5},
     {id:2, nome: "TECLADO", preco: 555.99, estoque: 1},
-    {id:3, nome: "MONITOR'", preco: 999.99, estoque: 0},
+    {id:3, nome: "MONITOR", preco: 999.99, estoque: 0},
 ];
 
 
@@ -25,6 +27,11 @@ listaProdutos.addEventListener("click", (e) =>{
     if(targetBtn){
         deletarProduto(Number(targetBtn.dataset.id));
     }
+});
+
+pesquisarProdutosInput.addEventListener("input", () =>{
+    const produtoPesquisado = pesquisarProdutosInput.value.trim().toUpperCase();
+    buscarProduduto(produtoPesquisado);
 });
 
 function criarProduto(produtos){
@@ -126,6 +133,14 @@ function formatarPreco(preco){
 
     return precoFormatado;
 }
+
+function buscarProduduto(produto){
+    let listaProcurados = produtos.filter(p => {return p.nome.includes(produto)});
+    
+    listarProdutos(listaProcurados);
+}
+
+
 
 listarProdutos(produtos);
 
