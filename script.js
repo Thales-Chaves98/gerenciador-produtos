@@ -19,6 +19,7 @@ novoProdutoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
 
     criarProduto(produtos);
+    
 });
 
 listaProdutos.addEventListener("click", (e) =>{
@@ -27,6 +28,7 @@ listaProdutos.addEventListener("click", (e) =>{
     if(targetBtn){
         deletarProduto(Number(targetBtn.dataset.id));
     }
+    atualizarContador(produtos);
 });
 
 pesquisarProdutosInput.addEventListener("input", () =>{
@@ -49,8 +51,7 @@ function criarProduto(produtos){
 
     produtos.push(novoProduto);
     listarProdutos(produtos);
-    console.log(produtos);
-
+    atualizarContador(produtos);
     novoProdutoForm.reset();
 }
 
@@ -68,7 +69,7 @@ function proximoId(array){
 
 function deletarProduto(id){
     produtos = produtos.filter(p => p.id !== id);
-    listarProdutos(produtos);
+    buscarProduduto(produtos);
 }
 
 function listarProdutos(produtos){
@@ -111,8 +112,6 @@ function listarProdutos(produtos){
         tableRow.append(tdDeleteBtn);
         listaProdutos.append(tableRow);
     });
-
-    atualizarContador(produtos);
 }
 
 function atualizarContador(produtos){
@@ -143,4 +142,4 @@ function buscarProduduto(produto){
 
 
 listarProdutos(produtos);
-
+atualizarContador(produtos);
