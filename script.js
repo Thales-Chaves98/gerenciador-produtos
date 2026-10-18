@@ -6,6 +6,7 @@ const precoProdutoInput = document.getElementById("produto-preco");
 const estoqueProdutoInput = document.getElementById("produto-estoque");
 const novoProdutoForm =  document.getElementById("form-produto");
 
+
 const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
 
 let produtos = [];
@@ -25,7 +26,7 @@ listaProdutos.addEventListener("click", (e) =>{
     if(deleteBtn){
         deletarProduto(Number(deleteBtn.dataset.id));
     } else if(editBtn){
-        console.log(editBtn.dataset.id);
+        abrirEdicao(Number(editBtn.dataset.id));
     }
     
 });
@@ -75,6 +76,11 @@ function deletarProduto(id){
     salvarProdutos(produtos);
 }
 
+function abrirEdicao(id){
+    const editarprodutoId = produtos.find(p => p.id === id);
+    console.log(editarprodutoId);
+}
+
 function listarProdutos(produtos){
     listaProdutos.textContent = "";
 
@@ -83,6 +89,7 @@ function listarProdutos(produtos){
         const precoFormatado = formatarPreco(produto.preco);
 
         const tableRow = document.createElement('tr');
+
 
         const tdNome = document.createElement('td');
         const spanNome = document.createElement('span');
@@ -102,29 +109,28 @@ function listarProdutos(produtos){
         spanEstoque.classList.add("stock-badge");
         tdEstoque.append(spanEstoque);
 
-        const tdDeleteBtn = document.createElement("td");
+        const tdAcoes = document.createElement("td");
+
         const deleteBtn = document.createElement("button");
         const deleteBtnSpan = document.createElement("span");
         deleteBtn.classList.add("delete-btn");
         deleteBtnSpan.textContent = "delete_forever";
         deleteBtn.dataset.id = produto.id;
         deleteBtn.append(deleteBtnSpan);
-        tdDeleteBtn.append(deleteBtn);
+        tdAcoes.append(deleteBtn);
 
-        const tdEditBtn = document.createElement("td");
         const editBtn = document.createElement("button");
         const editBtnSpan = document.createElement("span");
         editBtn.classList.add("edit-btn");
         editBtnSpan.textContent = "edit";
         editBtn.dataset.id = produto.id;
         editBtn.append(editBtnSpan);
-        tdEditBtn.append(editBtn);
+        tdAcoes.append(editBtn);
 
         tableRow.append(tdNome);
         tableRow.append(tdPreco);
         tableRow.append(tdEstoque);
-        tableRow.append(tdDeleteBtn);
-        tableRow.append(tdEditBtn);
+        tableRow.append(tdAcoes);
         listaProdutos.append(tableRow);
     });
 }
