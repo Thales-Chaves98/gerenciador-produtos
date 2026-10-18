@@ -50,11 +50,13 @@ formEdicao.addEventListener("submit", (e) =>{
 
     if(!produtoEmEdicao) return;
 
-    produtoEmEdicao.nome = editarNome.value.trim().toUpperCase();
+    const novoNome = editarNome.value.trim().toUpperCase();
+
+    if(novoNome === "" ) return;
+
+    produtoEmEdicao.nome = novoNome;
     produtoEmEdicao.preco = Number(editarPreco.value);
     produtoEmEdicao.estoque = Number(editarEstoque.value);
-
-    if(produtoEmEdicao.nome === "" || editarPreco.value === 0 ) return;
 
     salvarProdutos(produtos);
     buscarProdutos();
