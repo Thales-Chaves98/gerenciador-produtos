@@ -6,6 +6,12 @@ const precoProdutoInput = document.getElementById("produto-preco");
 const estoqueProdutoInput = document.getElementById("produto-estoque");
 const novoProdutoForm =  document.getElementById("form-produto");
 
+const painelEdicao = document.getElementById("painel-edicao");
+const editarNome = document.getElementById("edicao-nome");
+const editarPreco = document.getElementById("edicao-preco");
+const editarEstoque = document.getElementById("edicao-estoque");
+const cancelarEditar = document.getElementById("cancelar-edicao");
+const salvarEditar = document.getElementById("salvar-edicao");
 
 const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
 
@@ -78,7 +84,14 @@ function deletarProduto(id){
 
 function abrirEdicao(id){
     const editarprodutoId = produtos.find(p => p.id === id);
-    console.log(editarprodutoId);
+    
+    if(!editarprodutoId) return;
+    painelEdicao.hidden = false;
+
+    editarNome.value = editarprodutoId.nome;
+    editarPreco.value = editarprodutoId.preco;
+    editarEstoque.value = editarprodutoId.estoque;
+
 }
 
 function listarProdutos(produtos){
