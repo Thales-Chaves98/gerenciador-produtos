@@ -72,6 +72,8 @@ function criarProduto(produtos){
     const precoProduto = Number(precoProdutoInput.value);
     const estoqueProduto = Number(estoqueProdutoInput.value); 
 
+    if(nomeProduto === "" || precoProduto === 0 ) return;
+
     let novoProduto = {
         id: proximoId(produtos),
         nome: nomeProduto,
