@@ -19,10 +19,13 @@ novoProdutoForm.addEventListener("submit", (e) =>{
 });
 
 listaProdutos.addEventListener("click", (e) =>{
-    const targetBtn = e.target.closest(".delete-btn");
+    const deleteBtn = e.target.closest(".delete-btn");
+    const editBtn = e.target.closest(".edit-btn");
 
-    if(targetBtn){
-        deletarProduto(Number(targetBtn.dataset.id));
+    if(deleteBtn){
+        deletarProduto(Number(deleteBtn.dataset.id));
+    } else if(editBtn){
+        console.log(editBtn.dataset.id);
     }
     
 });
@@ -101,15 +104,27 @@ function listarProdutos(produtos){
 
         const tdDeleteBtn = document.createElement("td");
         const deleteBtn = document.createElement("button");
+        const deleteBtnSpan = document.createElement("span");
         deleteBtn.classList.add("delete-btn");
-        deleteBtn.textContent = "X";
+        deleteBtnSpan.textContent = "delete_forever";
         deleteBtn.dataset.id = produto.id;
+        deleteBtn.append(deleteBtnSpan);
         tdDeleteBtn.append(deleteBtn);
+
+        const tdEditBtn = document.createElement("td");
+        const editBtn = document.createElement("button");
+        const editBtnSpan = document.createElement("span");
+        editBtn.classList.add("edit-btn");
+        editBtnSpan.textContent = "edit";
+        editBtn.dataset.id = produto.id;
+        editBtn.append(editBtnSpan);
+        tdEditBtn.append(editBtn);
 
         tableRow.append(tdNome);
         tableRow.append(tdPreco);
         tableRow.append(tdEstoque);
         tableRow.append(tdDeleteBtn);
+        tableRow.append(tdEditBtn);
         listaProdutos.append(tableRow);
     });
 }
