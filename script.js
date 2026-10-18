@@ -46,7 +46,7 @@ pesquisarProdutosInput.addEventListener("input", () =>{
 formEdicao.addEventListener("submit", (e) =>{
     e.preventDefault();
 
-    const produtoEmEdicao = produtos.find(p => p.id = editingId);
+    const produtoEmEdicao = produtos.find(p => p.id === editingId);
 
     if(!produtoEmEdicao) return;
 
@@ -57,6 +57,8 @@ formEdicao.addEventListener("submit", (e) =>{
     salvarProdutos(produtos);
     buscarProdutos();
     painelEdicao.hidden = true;
+
+    editingId = null;
 });
 
 
