@@ -61,6 +61,10 @@ formEdicao.addEventListener("submit", (e) =>{
     editingId = null;
 });
 
+cancelarEditar.addEventListener("click", () =>{
+    painelEdicao.hidden = true;
+    editingId = null;
+});
 
 function criarProduto(produtos){
 
