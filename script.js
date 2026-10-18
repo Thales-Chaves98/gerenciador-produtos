@@ -112,8 +112,6 @@ function listarProdutos(produtos){
         tableRow.append(tdDeleteBtn);
         listaProdutos.append(tableRow);
     });
-
-    carregarProdutos();
 }
 
 function atualizarContador(produtos){
@@ -122,8 +120,6 @@ function atualizarContador(produtos){
     const totalProdutosTxt = totalProdutos === 1 ? `${totalProdutos} produto`:`${totalProdutos} produtos`;
 
     totalProdutosSpan.innerText = totalProdutosTxt;
-
-    carregarProdutos();
 }
 
 function formatarPreco(preco){
