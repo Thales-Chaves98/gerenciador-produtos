@@ -125,3 +125,15 @@ h1 { margin: 0; font-size: 1.25rem; letter-spacing: -.035em; }
 .search-field input { width: 100%; min-height: 44px; padding: .7rem .95rem; border: 1px solid #cbd5e1; border-radius: 10px; background: white; color: var(--text); font: inherit; }
 .search-field input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px #dbeafe; }
 @media (max-width: 640px) { .catalog-toolbar { padding: 1rem; } .search-field { max-width: none; } }
+
+/* Edição de produtos: HTML e CSS preparados com auxílio de IA; lógica em JavaScript pelo estudante. */
+[hidden] { display: none !important; }
+.edit-panel { margin-bottom: 1.8rem; border-color: #bfdbfe; }
+.edit-panel .panel-header { background: #f8fbff; }
+.secondary-button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .8rem 1.4rem; border: 1px solid #cbd5e1; border-radius: 10px; background: white; color: #334155; font: inherit; font-weight: 650; cursor: pointer; }
+.secondary-button:hover { background: #f1f5f9; }
+.secondary-button:focus-visible { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+.edit-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: .4rem .7rem; margin-right: .5rem; border: 1px solid #bfdbfe; border-radius: 9px; background: #eff6ff; color: #1d4ed8; font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer; }
+.edit-btn:hover { background: #dbeafe; }
+.edit-btn:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+@media (max-width: 480px) { .edit-panel .form-actions { flex-direction: row; } .edit-panel .form-actions button { flex: 1; min-width: 0; } }
