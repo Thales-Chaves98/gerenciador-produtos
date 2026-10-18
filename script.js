@@ -54,6 +54,8 @@ formEdicao.addEventListener("submit", (e) =>{
     produtoEmEdicao.preco = Number(editarPreco.value);
     produtoEmEdicao.estoque = Number(editarEstoque.value);
 
+    if(produtoEmEdicao.nome === "" || editarPreco.value === 0 ) return;
+
     salvarProdutos(produtos);
     buscarProdutos();
     painelEdicao.hidden = true;
@@ -113,6 +115,7 @@ function abrirEdicao(id){
     const editarprodutoId = produtos.find(p => p.id === id);
     
     if(!editarprodutoId) return;
+    
     painelEdicao.hidden = false;
 
     editarNome.value = editarprodutoId.nome;
