@@ -33,7 +33,7 @@ listaProdutos.addEventListener("click", (e) =>{
 
 pesquisarProdutosInput.addEventListener("input", () =>{
     
-    buscarProdudutos();
+    buscarProdutos();
 });
 
 function criarProduto(produtos){
@@ -53,7 +53,8 @@ function criarProduto(produtos){
     atualizarContador(produtos);
     novoProdutoForm.reset();
 
-    buscarProdudutos();
+    buscarProdutos();
+    salvarProdutos(produtos);
 }
 
 function proximoId(array){
@@ -70,8 +71,9 @@ function proximoId(array){
 
 function deletarProduto(id){
     produtos = produtos.filter(p => p.id !== id);
-    buscarProdudutos();
+    buscarProdutos();
     atualizarContador(produtos);
+    salvarProdutos(produtos);
 }
 
 function listarProdutos(produtos){
@@ -135,12 +137,16 @@ function formatarPreco(preco){
     return precoFormatado;
 }
 
-function buscarProdudutos(){
+function buscarProdutos(){
     const produtoPesquisado = pesquisarProdutosInput.value.trim().toUpperCase();
 
     let listaProcurados = produtos.filter(p => {return p.nome.includes(produtoPesquisado)});
     
     listarProdutos(listaProcurados);
+}
+
+function salvarProdutos(produtos){
+    localStorage.setItem("produtos", JSON.stringify(produtos));
 }
 
 
