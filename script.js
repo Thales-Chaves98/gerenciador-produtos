@@ -8,11 +8,7 @@ const novoProdutoForm =  document.getElementById("form-produto");
 
 const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
 
-let produtos = [
-    {id:1, nome: "MOUSE", preco: 25.99, estoque: 5},
-    {id:2, nome: "TECLADO", preco: 555.99, estoque: 1},
-    {id:3, nome: "MONITOR", preco: 999.99, estoque: 0},
-];
+let produtos = [];
 
 
 novoProdutoForm.addEventListener("submit", (e) =>{
@@ -116,6 +112,8 @@ function listarProdutos(produtos){
         tableRow.append(tdDeleteBtn);
         listaProdutos.append(tableRow);
     });
+
+    carregarProdutos();
 }
 
 function atualizarContador(produtos){
@@ -124,6 +122,8 @@ function atualizarContador(produtos){
     const totalProdutosTxt = totalProdutos === 1 ? `${totalProdutos} produto`:`${totalProdutos} produtos`;
 
     totalProdutosSpan.innerText = totalProdutosTxt;
+
+    carregarProdutos();
 }
 
 function formatarPreco(preco){
@@ -149,7 +149,15 @@ function salvarProdutos(produtos){
     localStorage.setItem("produtos", JSON.stringify(produtos));
 }
 
+function carregarProdutos(){
+    const dadosSalvos = localStorage.getItem("produtos");
+    if(dadosSalvos !== null){
+        const produtosSalvos = JSON.parse(dadosSalvos);
 
+        produtos = produtosSalvos;
+    }
+}
 
+carregarProdutos();
 listarProdutos(produtos);
 atualizarContador(produtos);
