@@ -137,3 +137,34 @@ h1 { margin: 0; font-size: 1.25rem; letter-spacing: -.035em; }
 .edit-btn:hover { background: #dbeafe; }
 .edit-btn:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
 @media (max-width: 480px) { .edit-panel .form-actions { flex-direction: row; } .edit-panel .form-actions button { flex: 1; min-width: 0; } }
+
+/* Ícones Google Material Symbols para ações da tabela (spans criados pelo JS). */
+.delete-btn > span,
+.edit-btn > span {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+.products-table .delete-btn,
+.products-table .edit-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+.products-table .edit-btn { margin-right: .5rem; }
+.products-table td:last-child { white-space: nowrap; }
