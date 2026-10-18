@@ -7,16 +7,17 @@ const estoqueProdutoInput = document.getElementById("produto-estoque");
 const novoProdutoForm =  document.getElementById("form-produto");
 
 const painelEdicao = document.getElementById("painel-edicao");
+const formEdicao = document.getElementById("form-edicao");
 const editarNome = document.getElementById("edicao-nome");
 const editarPreco = document.getElementById("edicao-preco");
 const editarEstoque = document.getElementById("edicao-estoque");
 const cancelarEditar = document.getElementById("cancelar-edicao");
-const salvarEditar = document.getElementById("salvar-edicao");
 
 const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
 
 let produtos = [];
 
+let editingId = null;
 
 novoProdutoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
@@ -41,6 +42,23 @@ pesquisarProdutosInput.addEventListener("input", () =>{
     
     buscarProdutos();
 });
+
+formEdicao.addEventListener("submit", (e) =>{
+    e.preventDefault();
+
+    const produtoEmEdicao = produtos.find(p => p.id = editingId);
+
+    if(!produtoEmEdicao) return;
+
+    produtoEmEdicao.nome = editarNome.value.trim().toUpperCase();
+    produtoEmEdicao.preco = Number(editarPreco.value);
+    produtoEmEdicao.estoque = Number(editarEstoque.value);
+
+    salvarProdutos(produtos);
+    buscarProdutos();
+    painelEdicao.hidden = true;
+});
+
 
 function criarProduto(produtos){
 
@@ -83,6 +101,7 @@ function deletarProduto(id){
 }
 
 function abrirEdicao(id){
+    editingId = id;
     const editarprodutoId = produtos.find(p => p.id === id);
     
     if(!editarprodutoId) return;
@@ -91,6 +110,7 @@ function abrirEdicao(id){
     editarNome.value = editarprodutoId.nome;
     editarPreco.value = editarprodutoId.preco;
     editarEstoque.value = editarprodutoId.estoque;
+
 
 }
 
