@@ -79,6 +79,7 @@ formEdicao.addEventListener("submit", (e) =>{
 cancelarEditar.addEventListener("click", () =>{
     painelEdicao.hidden = true;
     editingId = null;
+    mensagemEdicao.textContent = "";
 });
 
 function criarProduto(produtos){
