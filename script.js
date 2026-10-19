@@ -52,10 +52,9 @@ formEdicao.addEventListener("submit", (e) =>{
 
     const novoNome = editarNome.value.trim().toUpperCase();
 
-    const produtoRepetido = produtos.some(p => p.nome === novoNome);
-    const produtoRepetidoId = produtos.some(p => p.id === novoNome.id);
+    const produtoRepetido = produtos.some(p => p.nome === novoNome && p.id !== editingId);
 
-    if(produtoRepetido && produtoRepetidoId !== editingId) return;
+    if(produtoRepetido) return;
 
     if(novoNome === "" ) return;
 
