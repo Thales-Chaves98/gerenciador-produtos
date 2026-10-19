@@ -52,6 +52,11 @@ formEdicao.addEventListener("submit", (e) =>{
 
     const novoNome = editarNome.value.trim().toUpperCase();
 
+    const produtoRepetido = produtos.some(p => p.nome === novoNome);
+    const produtoRepetidoId = produtos.some(p => p.id === novoNome.id);
+
+    if(produtoRepetido && produtoRepetidoId !== editingId) return;
+
     if(novoNome === "" ) return;
 
     produtoEmEdicao.nome = novoNome;
@@ -87,7 +92,7 @@ function criarProduto(produtos){
 
     const produtoRepetido = produtos.some(p => p.nome === nomeProduto);
 
-    if(produtoRepetido === true) return;
+    if(produtoRepetido) return;
 
     produtos.push(novoProduto);
     atualizarContador(produtos);
