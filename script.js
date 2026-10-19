@@ -85,6 +85,10 @@ function criarProduto(produtos){
         estoque: estoqueProduto
     }
 
+    const produtoRepetido = produtos.some(p => p.nome === nomeProduto);
+
+    if(produtoRepetido === true) return;
+
     produtos.push(novoProduto);
     atualizarContador(produtos);
     novoProdutoForm.reset();
