@@ -14,6 +14,7 @@ const editarEstoque = document.getElementById("edicao-estoque");
 const cancelarEditar = document.getElementById("cancelar-edicao");
 
 const mensagemform = document.getElementById("mensagem-form")
+const mensagemEdicao = document.getElementById("mensagem-edicao");
 
 const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
 
@@ -57,7 +58,7 @@ formEdicao.addEventListener("submit", (e) =>{
     const produtoRepetido = produtos.some(p => p.nome === novoNome && p.id !== editingId);
 
     if(produtoRepetido){
-       
+        mensagemEdicao.textContent = "JÁ EXISTE OUTRO PRODUTO COM ESSE NOME !";
         return;
     };
 
