@@ -13,6 +13,8 @@ const editarPreco = document.getElementById("edicao-preco");
 const editarEstoque = document.getElementById("edicao-estoque");
 const cancelarEditar = document.getElementById("cancelar-edicao");
 
+const mensagemform = document.getElementById("mensagem-form")
+
 const pesquisarProdutosInput =  document.getElementById("pesquisa-produtos");
 
 let produtos = [];
@@ -54,7 +56,10 @@ formEdicao.addEventListener("submit", (e) =>{
 
     const produtoRepetido = produtos.some(p => p.nome === novoNome && p.id !== editingId);
 
-    if(produtoRepetido) return;
+    if(produtoRepetido){
+       
+        return;
+    };
 
     if(novoNome === "" ) return;
 
@@ -91,7 +96,10 @@ function criarProduto(produtos){
 
     const produtoRepetido = produtos.some(p => p.nome === nomeProduto);
 
-    if(produtoRepetido) return;
+    if(produtoRepetido){
+        mensagemform.textContent = "JÁ EXISTE UM PRODUTO COM ESSE NOME !";
+        return
+    };
 
     produtos.push(novoProduto);
     atualizarContador(produtos);
