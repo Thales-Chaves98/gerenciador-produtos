@@ -73,6 +73,7 @@ formEdicao.addEventListener("submit", (e) =>{
     painelEdicao.hidden = true;
 
     editingId = null;
+    mensagemEdicao.textContent = "";
 });
 
 cancelarEditar.addEventListener("click", () =>{
