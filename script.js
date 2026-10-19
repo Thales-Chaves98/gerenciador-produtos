@@ -101,6 +101,7 @@ function criarProduto(produtos){
         return
     };
 
+    mensagemform.textContent = "";
     produtos.push(novoProduto);
     atualizarContador(produtos);
     novoProdutoForm.reset();
